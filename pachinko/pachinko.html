@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>파칭코</title>
+      <link rel="stylesheet" href="pachinko.css" />
+    </head>
+    <body>
+      <div class="container">
+        <div class="title">rodela pachinko</div>
+        <div>
+          <div class="slot" id="slot1">
+            <img src="img/1.PNG"/>
+          </div>
+          <div class="slot" id="slot2">
+            <img src="img/1.PNG"/>
+          </div>
+          <div class="slot" id="slot3">
+            <img src="img/1.PNG"/>
+          </div>
+        </div>
+        <div class="background"></div>
+        <button onclick="startSlotMachine()">spin</button>
+      </div>
+
+      
+
+      <script>
+        const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+
+        function startSlotMachine() {
+          const slot1 = document.getElementById('slot1');
+          const slot2 = document.getElementById('slot2');
+          const slot3 = document.getElementById('slot3');
+
+          const interval1 = setInterval(() => {
+            slot1.innerHTML = `<img src="img/${getRandomItem()}.PNG" alt="Image ${getRandomItem()}" />`;
+          }, 100);
+
+          const interval2 = setInterval(() => {
+            slot2.innerHTML = `<img src="img/${getRandomItem()}.PNG" alt="Image ${getRandomItem()}" />`;
+          }, 100);
+
+          const interval3 = setInterval(() => {
+            slot3.innerHTML = `<img src="img/${getRandomItem()}.PNG" alt="Image ${getRandomItem()}" />`;
+          }, 100);
+
+
+          setTimeout(() => {
+            clearInterval(interval1);
+            clearInterval(interval2);
+            clearInterval(interval3);
+            checkWin(
+              slot1.querySelector('img').alt,
+              slot2.querySelector('img').alt,
+              slot3.querySelector('img').alt
+            );
+          }, 2000);
+        }
+
+        function getRandomItem() {
+          const randomIndex = Math.floor(Math.random() * numbers.length);
+          return numbers[randomIndex];
+        }
+
+        function checkWin(item1, item2, item3) {
+          if (item1 === item2 && item2 === item3) {
+            alert('you win');
+          } else {
+            alert('you lost');
+          }
+        }
+      </script>
+    </body>
+  </html>
+</!DOCTYPE>
