@@ -111,7 +111,7 @@
     </div>
     <script>
       (function () {
-        const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        const numbers = ['🍑', '🍍', '🍅', '🍆', '🍊', '🍋', '🍌', '🍉', '🍇','🍓'];
         const doors = document.querySelectorAll('.door');
         let spinning = false;
 
@@ -203,15 +203,18 @@
 
         function shuffle([...arr]) {
           let m = arr.length;
-          while (m) {
+          while (m){
             const i = Math.floor(Math.random() * m--);
-            [arr[m], arr[i]] = [arr[i], arr[m]];
+            [arr[m], arr[i]]= [arr[i], arr[m]];
           }
           return arr;
         }
 
         init();
       })();
+      
     </script>
+
   </body>
+
 </html>
