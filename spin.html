@@ -119,6 +119,9 @@
         document.querySelector('#spinner').addEventListener('click', spin);
         document.querySelector('#reseter').addEventListener('click', init);
 
+        var audio =new Audio('spin.mp3');
+        audio.volume = 0.5
+
         document.addEventListener('keydown', (event) => {
           if (event.code === 'Space' && !spinning) {
             spin();
@@ -148,6 +151,8 @@
                 'transitionstart',
                 function () {
                   door.dataset.spinned = '1';
+                  audio.play();
+                  audio.playbackRate = 2.0;
                   this.querySelectorAll('.box').forEach((box) => {
                     box.style.filter = 'blur(1px)';
                   });
@@ -196,7 +201,7 @@
             const boxes = door.querySelector('.boxes');
             const duration = parseInt(boxes.style.transitionDuration);
             boxes.style.transform = 'translateY(0)';
-            await new Promise((resolve) => setTimeout(resolve, duration * 100));
+            await new Promise((resolve) => setTimeout(resolve, duration * 400));
           }
 
           spinning = false;
